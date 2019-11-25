@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg1">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/rule"
+            android:layout_marginTop="40dp"/>
+
+        <TextView
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="กฎการใช้บริการRabbit Cafe"
+            android:textSize="30sp"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="80dp"/>
+
+    </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:paddingLeft="30dp"
+        android:layout_marginRight="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1. ห้ามส่งเสียงดัง หรือกระทำการใดๆ ให้น้องกระต่ายตกใจเด็ดขาด"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2.ควรสัมผัสน้องกระต่ายอย่างเบามือ"
+            android:layout_marginTop="40dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3. ห้ามดึงหู หาง ขา หรือ หนวด น้องกระต่ายเด็ดขาด"
+            android:layout_marginTop="70dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4. อาหารที่สามารถป้อมให้น้องกระต่ายจะต้องเป็นอาหารที่ทางร้าน rabbit cafe จัดเตรียมให้เท่านั้น"
+            android:layout_marginTop="100dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="5. ห้ามนำอาหาร หรือเครื่องดื่มจากภายนอกเข้ามาภายในบริเวณ rabbit cafe "
+            android:layout_marginTop="140dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="6. ห้ามสูบบุหรี่ภายในบริเวณ rabbit cafe"
+            android:layout_marginTop="185dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="7. ห้ามนำสัตว์เลี้ยงเข้ามาภายในบริเวณ rabbit cafe"
+            android:layout_marginTop="210dp"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="220dp"
+            android:src="@drawable/sawasdee"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ขอความกรุณา ทำตามกฎด้วยค่ะ"
+            android:paddingRight="130dp"
+            android:layout_marginTop="270dp"
+            android:textSize="30sp"/>
+    </RelativeLayout>
+
+
+
+
+</RelativeLayout>
