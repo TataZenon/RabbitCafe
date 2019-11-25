@@ -3,12 +3,14 @@ package ac.th.ssru.tarou.workshop.rabbitcafe;
 public class FoodModel {
     String name;
     String price;
-    String image;
+    String img;
 
-    public FoodModel(String name, String price, String image) {
+    public FoodModel(){}
+
+    public FoodModel(String name, String price, String img) {
         this.name = name;
         this.price = price;
-        this.image = image;
+        this.img = img;
     }
 
     public String getName() {
@@ -19,7 +21,7 @@ public class FoodModel {
         return price;
     }
 
-    public String getImage() {
-        return image;
+    public String getImg() {
+        return img;
     }
 }

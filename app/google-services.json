@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "623547485479-78lpqu7rfuuohtqkjujmpcjep3oe6k4n.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ac.th.ssru.tarou.workshop.rabbitcafe",
+            "certificate_hash": "9d7b1506972d4486963809f98e60722b02532066"
+          }
+        },
+        {
           "client_id": "623547485479-g752niug7t3nmv4a1eusnr3r6k12ri4m.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

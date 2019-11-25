@@ -1,5 +1,6 @@
 package ac.th.ssru.tarou.workshop.rabbitcafe;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -7,8 +8,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreSettings;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -16,17 +22,14 @@ public class MainActivity extends AppCompatActivity {
     private Button buttonrabbit;
     private Button buttonrule;
 
-
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        /*readFood();*/
-
+        db = FirebaseFirestore.getInstance();
 
         buttonfood = (Button) findViewById(R.id.btnFoodMenu);
         buttonrule = (Button) findViewById(R.id.btnRule);
@@ -57,29 +60,33 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         firestore.setFirestoreSettings(settings);
 
-
+        readFood();
     }
 
-    /*private void readFood() {
-        DocumentReference food = db.collection("food").document("1001");
-                food.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+    private void readFood() {
+        db.collection("food")
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        if (task.isSuccessful()){
-                            DocumentSnapshot doc = task.getResult();
-                            StringBuilder data = new StringBuilder("");
-                            data.append("Name: ").append(doc.getString("name"));
-                            data.append("\nPrice: ") .append(doc.getString("price"));
-                            data.append("\nimage: ") .append(doc.getString("img"));
-                            txtDisplay.setText(data.toString());
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            if (task.getResult() != null) {
+                                List<FoodModel> downloadInfoList = task.getResult().toObjects(FoodModel.class);
+                                for (FoodModel downloadInfo : downloadInfoList) {
+                                    FoodModel model = new FoodModel(downloadInfo.name, downloadInfo.price, downloadInfo.img);
+                                    FoodMenuActivity.addFoodModel(model);
+                                }
+                            }
                         }
                     }
                 });
-    }*/
+    }
 
     public void openFoodMenu(){
-        Intent intent = new Intent(this, FoodMenuActivity.class);
-        startActivity(intent);
+        if(FoodMenuActivity.food.size() == 6){
+            Intent intent = new Intent(this, FoodMenuActivity.class);
+            startActivity(intent);
+        }
     }
 
     public void openRuleMenuMenu(){

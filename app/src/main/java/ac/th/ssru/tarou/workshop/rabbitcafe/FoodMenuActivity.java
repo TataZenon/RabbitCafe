@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -20,8 +21,7 @@ public class FoodMenuActivity extends AppCompatActivity {
     public android.widget.TextView price1,price2,price3,price4,price5,price6;
     public ImageView img1,img2,img3,img4,img5,img6;
 
-    FirebaseFirestore db;
-    ArrayList<FoodModel> food = new ArrayList<>(6);
+    public static ArrayList<FoodModel> food = new ArrayList<>(6);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,60 +49,31 @@ public class FoodMenuActivity extends AppCompatActivity {
         img5 = (ImageView) findViewById(R.id.img5);
         img6 = (ImageView) findViewById(R.id.img6);
 
-        db = FirebaseFirestore.getInstance();
-//        db.collection("food").orderBy("id").startAt(1).endAt(6).get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if(task.isSuccessful()){
-//                            QuerySnapshot document = task.getResult();
-//                            for(int i=0; i<6; i++){
-//                                if(document.getDocuments().get(i).exists()){
-//                                    String na = document.getDocuments().get(i).get("name").toString();
-//                                    String pr = document.getDocuments().get(i).get("price").toString();
-//                                    String im = document.getDocuments().get(i).get("img").toString();
-//                                    System.out.println(na);
-//                                    addItem(na, pr, im);
-//                                }
-//                            }
-//                        }
-//                    }
-//                });
 
-        db.collection("food")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            if (task.getResult() != null) {
-                                List<FoodModel> downloadInfoList = task.getResult().toObjects(FoodModel.class);
-                                for (FoodModel downloadInfo : downloadInfoList) {
-                                    FoodModel model = new FoodModel(downloadInfo.name, downloadInfo.price, downloadInfo.image);
-                                    addFoodModel(model);
-                                }
-                            }
-                        }
-                    }
-                });
 
-//        name1.setText(food.get(0).getName());
-//        name1.setText(food.get(1).getName());
-//        name1.setText(food.get(2).getName());
-//        name1.setText(food.get(3).getName());
-//        name1.setText(food.get(4).getName());
-//        name1.setText(food.get(5).getName());
-//
-//        price1.setText(food.get(0).getPrice());
-//        price1.setText(food.get(1).getPrice());
-//        price1.setText(food.get(2).getPrice());
-//        price1.setText(food.get(3).getPrice());
-//        price1.setText(food.get(4).getPrice());
-//        price1.setText(food.get(5).getPrice());
+        name1.setText(food.get(0).getName());
+        name2.setText(food.get(1).getName());
+        name3.setText(food.get(2).getName());
+        name4.setText(food.get(3).getName());
+        name5.setText(food.get(4).getName());
+        name6.setText(food.get(5).getName());
+
+        price1.setText(food.get(0).getPrice());
+        price2.setText(food.get(1).getPrice());
+        price3.setText(food.get(2).getPrice());
+        price4.setText(food.get(3).getPrice());
+        price5.setText(food.get(4).getPrice());
+        price6.setText(food.get(5).getPrice());
+
+        Glide.with(img1).load(food.get(0).getImg()).into(img1);
+        Glide.with(img2).load(food.get(1).getImg()).into(img2);
+        Glide.with(img3).load(food.get(2).getImg()).into(img3);
+        Glide.with(img4).load(food.get(3).getImg()).into(img4);
+        Glide.with(img5).load(food.get(4).getImg()).into(img5);
+        Glide.with(img6).load(food.get(5).getImg()).into(img6);
     }
 
-    private void addFoodModel(FoodModel model) {
+    public static void addFoodModel(FoodModel model) {
         food.add(model);
-        System.out.println(food.get(0).getName());
     }
 }
